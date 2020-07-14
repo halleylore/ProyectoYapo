@@ -12,7 +12,6 @@ public class Base {
 	
  @BeforeTest  
   public void beforeTest() {
-	  System.out.println("Clase mama");
 	String path = Paths.get(System.getProperty("user.dir"), "/driver/chromedriver.exe").toString();
 	System.out.println(System.getProperty("user.dir"));
 	System.setProperty("webdriver.chrome.driver", path);
@@ -25,7 +24,7 @@ public class Base {
   
   //@AfterTest
   public void afterTest() {
-	 // driver.close();   
+	  driver.close();   
 	  
 		//driver.quit();
   }

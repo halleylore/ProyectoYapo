@@ -16,24 +16,34 @@ public class BuscaCasa extends Base{
 		this.driver = driver;
 	}
 		public void casa() {
-			driver.manage().timeouts().implicitlyWait(200, TimeUnit.SECONDS);
+			try {
+				
 			
-			WebDriverWait wait = new WebDriverWait(driver, 90);
-			wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//a[contains(text(),'Región Metropolitana')]"))));
+				WebDriverWait wait = new WebDriverWait(driver, 4);
+				wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//a[contains(text(),'Región Metropolitana')]"))));		
+				driver.findElement(By.xpath("//a[contains(text(),'Región Metropolitana')]")).click();
+				
+				Thread.sleep(15000);
+				//driver.manage().timeouts().implicitlyWait(200, TimeUnit.SECONDS);
+				WebDriverWait wait2 = new WebDriverWait(driver, 10);
+				wait2.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[@id='multicom-head']"))));
+				
+
+				
+				driver.findElement(By.xpath("//*[@id='multicom-head']")).click();
+				driver.findElement(By.xpath("//*[@id='multicom-widget']/label[2]/div")).click();
+				
+				JavascriptExecutor js = (JavascriptExecutor) driver;
+				js.executeScript("window.scrollBy(0,200)");
+				
+				driver.findElement(By.xpath("//*[@id='searchbutton']")).click();
+			}catch(Exception e) {
+				System.out.println("Error: "+e);
+				
+			}
 			
-			driver.findElement(By.xpath("//a[contains(text(),'Región Metropolitana')]")).click();
+
 			
-			WebDriverWait wait2 = new WebDriverWait(driver, 80);
-			wait2.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//*[@id='multicom-head']"))));
-			
-			driver.manage().timeouts().implicitlyWait(200, TimeUnit.SECONDS);
-			
-			driver.findElement(By.xpath("//*[@id='multicom-head']")).click();
-			driver.findElement(By.xpath("//*[@id='multicom-widget']/label[2]/div")).click();
-			
-			JavascriptExecutor js = (JavascriptExecutor) driver;
-			js.executeScript("window.scrollBy(0,200)");
-			
-			driver.findElement(By.xpath("//*[@id='searchbutton']")).click();
+
 		}
 }
