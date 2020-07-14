@@ -9,14 +9,14 @@ public class Yapo_Lorena extends Base {
 
   @Test
   public void tarea() {
-	
+	/*
 	  	Login login = new Login(driver);
 	  	login.ingresaUsuario();
 		
 	  	//Busqueda busqueda = new Busqueda(driver);
 	  	//busqueda.buscarRegion();
 	  		  
-
+*/
 
   }
  }
